@@ -1,7 +1,7 @@
 def cifraCesar(palavra, deslocamento = 0):
     nova = list(palavra.lower())
     alfa = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    posicoes = {
+    posicoesiniciais = {
         "a": 0,
         "b": 1,
         "c": 2,
@@ -28,8 +28,13 @@ def cifraCesar(palavra, deslocamento = 0):
         'x': 23,
         'y': 24,
         'z': 25}
-    for i in range(len(nova)):
-        nova[i] = alfa[posicoes[nova[i]] + deslocamento]
+    for i in range(0,len(nova)):
+        posicaofinal = posicoesiniciais[nova[i]] + deslocamento
+        if posicaofinal > 25:
+            excesso = posicaofinal - 25
+            posicaofinal = -1  +  excesso
+
+        nova[i] = alfa[posicaofinal]
                 
     
     return "".join(nova)
